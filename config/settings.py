@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+# .envファイルの読み込み
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y5xr6m*oe-d_iw&&65r@1jjg0m_u##vunw+g1@u*!=#7c82gb!'
+SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,7 +84,7 @@ DATABASES = {
       'ENGINE': 'django.db.backends.postgresql',
       'NAME': 'first_app',
       'USER': 'postgres',
-      'PASSWORD': 'Ranaindy7', # ご自身で設定したパスワード
+      'PASSWORD':os.environ.get('DB_PASSWORD'), # ご自身で設定したパスワード
       'HOST': 'localhost',
       'PORT': '5432',
     }
